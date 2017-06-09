@@ -113,6 +113,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
 void matrix_init_kb(void) {
   rgblight_init();
   rgblight_mode(14);
+  rgblight_sethsv_noeeprom(0, 255, 255);
 }
 
 void matrix_init_user(void) {
@@ -126,27 +127,22 @@ void matrix_scan_user(void) {
   {
     switch (layer) {
      case 1:
-        rgblight_setrgb(0, 200, 83);
         rgblight_mode(5);
         rgblight_setrgb(0, 200, 83);
         break;
       case 2:
-        rgblight_setrgb(0, 184, 212);
         rgblight_mode(1);
         rgblight_setrgb(0, 184, 212);
         break;
       case 3:
-        rgblight_setrgb(255, 171, 0);
         rgblight_mode(1);
         rgblight_setrgb(255, 171, 0);
         break;
       case 4:
-        rgblight_setrgb(0, 200, 83);
         rgblight_mode(1);
         rgblight_setrgb(0, 200, 83);
         break;
       case 5:
-        rgblight_setrgb(0, 200, 83);
         rgblight_mode(5);
         rgblight_setrgb(0, 200, 83);
         break;
