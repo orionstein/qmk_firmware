@@ -46,6 +46,14 @@
 /* prevent stuck modifiers */
 #define PREVENT_STUCK_MODIFIERS
 
+/* disable debug print */
+#undef NO_DEBUG
+#define NO_DEBUG
+
+/* disable print */
+#undef NO_PRINT
+#define NO_PRINT
+
 
 #ifdef RGB_DI_PIN
 #define RGBLIGHT_ANIMATIONS
