@@ -35,7 +35,8 @@ enum {
   TD_DOT_BSPACE = 1,
   TD_U_BKT = 2,
   TD_D_TAB = 3,
-  TD_P_SCLN = 4
+  TD_P_SCLN = 4,
+  TD_Z_SFT_GUI = 5,
 };
 
 enum macro_keycodes {
@@ -94,22 +95,22 @@ enum macro_keycodes {
 #define AG_T_C      M(KC_AG_TAB_C)              // For Chrome, etc. Tab Close,
 #define AG_T_N      M(KC_AG_TAB_N)              //                  Tab New, and
 #define AG_T_R      M(KC_AG_TAB_R)              //                  Tab Reopen Closed
-/* #define QUEST       M(KC_QUESTION)              //                  Tab Reopen Closed */
 
 #define TD_SPC      TD(TD_COMM_SPACE)
 #define TD_BSPC     TD(TD_DOT_BSPACE)
 #define TD_U        TD(TD_U_BKT)
 #define TD_D        TD(TD_D_TAB)
 #define TD_P        TD(TD_P_SCLN)
+#define TD_Z        TD(TD_Z_SFT_GUI)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_WORKMAN] = KEYMAP(
       /*|----------`---------`----------`----------`----------`----------`----------`----------`----------`----------|*/
-           CTL_ESC ,  Q_COD  ,   TD_D   ,   KC_R   ,   KC_W   ,   KC_B   ,   KC_J   ,   KC_F   ,   TD_U   ,   TD_P   ,
+           CTL_ESC ,  Q_COD  ,   KC_D   ,   KC_R   ,   KC_W   ,   KC_B   ,   KC_J   ,   KC_F   ,   TD_U   ,   TD_P   ,
       /*|----------`---------`----------`----------`----------`----------`----------`----------`----------`----------|*/
            A_ARR   ,  S_SYM  ,   H_NUM  ,   T_FUN  ,   KC_G   ,   KC_Y   ,   KC_N   ,   KC_E   ,   KC_O   ,   KC_I   ,
       /*|----------`---------`----------`----------`----------`----------`----------`----------`----------`----------|*/
-           Z_GUI   ,  X_MSE  ,   M_ALT  ,   KC_C   ,  TD_BSPC ,  TD_SPC  ,   KC_V   ,   KC_K   ,   KC_L   ,  ENT_SFT ),
+           Z_SFT   ,  X_MSE  ,   M_ALT  ,   KC_C   ,  TD_BSPC ,  TD_SPC  ,   KC_V   ,   KC_K   ,   KC_L   ,  ENT_SFT ),
       /*|----------`---------`----------`----------`----------`----------`----------`----------`----------`----------|*/
   [_QWERTY] = KEYMAP(
       /*|----------`---------`----------`----------`----------`----------`----------`----------`----------`----------|*/
@@ -139,17 +140,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       /*|----------`---------`----------`----------`----------`----------`----------`----------`----------`----------|*/
            KC_0    ,   KC_1  ,  KC_2    ,  KC_3    ,   KC_4   ,   KC_5   ,  KC_6    ,   KC_7   ,   KC_8   ,   KC_9   ,
       /*|----------`---------`----------`----------`----------`----------`----------`----------`----------`----------|*/
-          KC_TAB   , XXXXXXX , _______  , XXXXXXX  ,  KC_PLUS , KC_SLASH , XXXXXXX  ,   KC_4   ,   KC_5   ,   KC_6   ,
+          KC_TAB   , XXXXXXX , _______  , XXXXXXX  ,  KC_PLUS , KC_SLASH ,  KC_DOT  ,   KC_4   ,   KC_5   ,   KC_6   ,
       /*|----------`---------`----------`----------`----------`----------`----------`----------`----------`----------|*/
            KC_ESC  , KC_EQUAL, XXXXXXX  , KC_ASTR  ,  XXXXXXX , KC_MINUS ,   KC_0   ,   KC_1   ,   KC_2   ,   KC_3   ),
       /*|----------`---------`----------`----------`----------`----------`----------`----------`----------`----------|*/
   [_CODING] = KEYMAP(
       /*|----------`---------`----------`----------`----------`----------`----------`----------`----------`----------|*/
-         KC_CMD_TAB, _______ , XXXXXXX  , KC_PLUS  ,  XXXXXXX , XXXXXXX  ,  KC_QUOT , KC_LCBR  ,  KC_LBRC , KC_RBRC  ,
+          ALT_TAB  , _______ , XXXXXXX  ,  KC_LT   ,  KC_GT   , KC_QUES  , KC_QUOT  , KC_SCOLON,  KC_LCBR , KC_RCBR  ,
       /*|----------`---------`----------`----------`----------`----------`----------`----------`----------`----------|*/
-          KC_CIRC   ,KC_PERC , _______  , XXXXXXX  ,  XXXXXXX , KC_SLASH , XXXXXXX  , KC_RCBR  ,  KC_LPRN , KC_RPRN  ,
+          KC_CIRC  , KC_PERC , _______  , KC_PLUS  , KC_BSLASH, KC_SLASH , KC_CIRC  , KC_DLR   ,  KC_LPRN , KC_RPRN  ,
       /*|----------`---------`----------`----------`----------`----------`----------`----------`----------`----------|*/
-          DLR_SFT  , KC_EQUAL, XXXXXXX  , KC_ASTR  ,  KC_UNDS , KC_MINUS , KC_SCOLON,   KC_0   ,  KC_DOT  , KC_PIPE  ),
+          KC_LSFT  , KC_EQUAL, XXXXXXX  , KC_ASTR  , KC_UNDS  , KC_MINUS , KC_COMM  , KC_DOT   ,  KC_LBRC , KC_RBRC  ),
       /*|----------`---------`----------`----------`----------`----------`----------`----------`----------`----------|*/
   [_FUNCTION] = KEYMAP(
       /*|----------`---------`----------`----------`----------`----------`----------`----------`----------`----------|*/
@@ -161,11 +162,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       /*|----------`---------`----------`----------`----------`----------`----------`----------`----------`----------|*/
   [_MOUSE] = KEYMAP(
       /*|----------`---------`----------`----------`----------`----------`----------`----------`----------`----------|*/
-         KC_CMD_TAB,KC_ALT_TAB, XXXXXXX , XXXXXXX  , XXXXXXX  , XXXXXXX  , XXXXXXX  , XXXXXXX  , KC_MS_U  ,  XXXXXXX ,
+          CMD_TAB  , ALT_TAB , XXXXXXX  , XXXXXXX  , XXXXXXX  , XXXXXXX  , XXXXXXX  , XXXXXXX  , KC_MS_U  ,  XXXXXXX ,
       /*|----------`---------`----------`----------`----------`----------`----------`----------`----------`----------|*/
-         XXXXXXX   , XXXXXXX , XXXXXXX  , XXXXXXX  , XXXXXXX  , XXXXXXX  , XXXXXXX  , KC_MS_L  , KC_MS_D  , KC_MS_R  ,
+          XXXXXXX  , XXXXXXX , XXXXXXX  , XXXXXXX  , XXXXXXX  , XXXXXXX  , XXXXXXX  , KC_MS_L  , KC_MS_D  , KC_MS_R  ,
       /*|----------`---------`----------`----------`----------`----------`----------`----------`----------`----------|*/
-         XXXXXXX,    _______ ,  SWITCH  , XXXXXXX  , XXXXXXX  ,KC_MS_BTN1,KC_MS_BTN2,KC_MS_BTN3, XXXXXXX  , XXXXXXX  ),
+          XXXXXXX  , _______ ,  SWITCH  , XXXXXXX  , XXXXXXX  ,KC_MS_BTN1,KC_MS_BTN2,KC_MS_BTN3, XXXXXXX  , XXXXXXX  ),
       /*|----------`---------`----------`----------`----------`----------`----------`----------`----------`----------|*/
   [_SWITCH] = KEYMAP(
       /*|----------`---------`----------`----------`----------`----------`----------`----------`----------`----------|*/
@@ -184,7 +185,8 @@ qk_tap_dance_action_t tap_dance_actions[] = {
   [TD_DOT_BSPACE]  = ACTION_TAP_DANCE_DOUBLE(KC_BSPACE, KC_DOT),
   [TD_U_BKT] = ACTION_TAP_DANCE_DOUBLE(KC_U, KC_LBRC),
   [TD_D_TAB] = ACTION_TAP_DANCE_DOUBLE(KC_D, KC_TAB),
-  [TD_P_SCLN] = ACTION_TAP_DANCE_DOUBLE(KC_P, KC_SCOLON)
+  [TD_P_SCLN] = ACTION_TAP_DANCE_DOUBLE(KC_P, KC_SCOLON),
+  [TD_Z_SFT_GUI] = ACTION_TAP_DANCE_DOUBLE(Z_SFT, KC_LGUI)
 };
 
 /*
@@ -240,8 +242,6 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
         return use_cmd ? MACRODOWN( D(LGUI),            T(T), END ) : MACRODOWN( D(LCTRL),            T(T), END );
       case KC_AG_TAB_R:
         return use_cmd ? MACRODOWN( D(LGUI), D(LSHIFT), T(T), END ) : MACRODOWN( D(LCTRL), D(LSHIFT), T(T), END );
-      /* case KC_QUESTION: */
-      /*   return MACRODOWN( D(LSHIFT), T(SLSH), END ); */
     }
 
     return MACRO_NONE;
